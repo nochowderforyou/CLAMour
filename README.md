@@ -36,7 +36,7 @@ Each petition is identified by a petition ID, which is the first 8 hex digits of
 
 Before a petition can be voted for, it must be registered on-chain. 
 This can be done simply by creating any transaction (coinstake or regular) with a CLAMspeech message saying: 
-[code]create clamour <sha256>[/code] where [code]<sha256>[/code] is the full 64 character lowercase hex sha256 hash of the full petition text. 
+[code]create clamour <sha256>[/code] where [code]<sha256>[/code] is the full 64 hex digit lowercase sha256 hash of the full petition text. 
 The first 8 hex digits of this hash should be unique, since they will be used as the petition ID. 
 In the unlikely event of a collision, you’ll need to slightly edit the petition text.
 
