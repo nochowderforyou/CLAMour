@@ -171,7 +171,7 @@ To use the console or command-line:
 
 [size=14pt][b]Interpreting the Data[/b][/size]
 
-In the event that two petition texts have the same 8 hex digit petition ID, the one with the “create petition <sha256>” registration speech which appears first in the blockchain is the one being supported by votes. 
+In the event that two petition texts have the same 8 hex digit petition ID, the one with the “create clamour <sha256>” registration speech which appears first in the blockchain is the one being supported by votes. 
 This prevents an attacker from faking support for an unpopular petition by brute-forcing a partial hash collision.
 
 A 'majority' exists when greater than 50% of staked blocks over the window express support for a petition.
