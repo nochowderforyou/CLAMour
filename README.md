@@ -35,8 +35,13 @@ Each petition is identified by a petition ID, which is the first 8 hex digits of
 [size=14pt][b]Registering A CLAMour Petition[/b][/size]
 
 Before a petition can be voted for, it must be registered on-chain. 
+
 This can be done simply by creating any transaction (coinstake or regular) with a CLAMspeech message saying: 
-[code]create clamour <sha256>[/code] where [code]<sha256>[/code] is the full 64 hex digit lowercase sha256 hash of the full petition text. 
+[code]create clamour <sha256>[/code]
+where: 
+[code]<sha256>[/code]
+is the full 64 hex digit lowercase sha256 hash of the full petition text. 
+
 The first 8 hex digits of this hash should be unique, since they will be used as the petition ID. 
 In the unlikely event of a collision, you’ll need to slightly edit the petition text.
 
@@ -50,9 +55,11 @@ It is planned that the reference client will be able to assist with this in the 
 [size=14pt][b]Supporting A CLAMour Petition[/b][/size]
 
 Once a petition has been registered on-chain, anyone can vote for it by staking a block with the CLAMspeech field set to: 
-[code]clamour <pid>[/code], where <pid> is the 8 hex digit petition ID of the petition being supported. 
+[code]clamour <pid>[/code]
+where <pid> is the 8 hex digit petition ID of the petition being supported. 
+
 It is possible to register support for multiple petitions at once by listing multiple space-separated petition IDs: 
-[code]clamour <pid1> <pid2> <pid3> …[/code]. 
+[code]clamour <pid1> <pid2> <pid3> …[/code]
 Only CLAMspeech messages associated with staked blocks ('coinstake') will be counted.
 
 Petition support will be counted over a 10,000 block rolling window representing approximately one week’s worth of blocks. 
@@ -66,17 +73,39 @@ Petition support will be counted over a 10,000 block rolling window representing
 
 Write the petition.
 
-[i]If you are using version 1.4.19 of the reference client or newer and wish to use its new GUI feature to create your petition:[/i]
-Click the [code]CLAMour[/code] tab in the client.
-Enter the petition text into the [code]Create Petition[/code] textbox.
-Click the [code]Create Identifier[/code] button to create the sha256 hash of your petition.
-Optionally, click the [code]Set Vote[/code] button to immediately begin staking with the new petition ID.
+
+[u][i]If you are using version 1.4.19 of the reference client or newer and wish to use its new GUI feature to create your petition:[/i][/u]
+
+Click the tab: 
+[code]CLAMour[/code]
+
+Enter the petition text into the textbox: 
+[code]Create Petition[/code]
+
+Click the button:
+[code]Create Identifier[/code]
+to create the sha256 hash of your petition.
+
+Optionally, click the button: 
+[code]Set Vote[/code]
+to immediately begin staking with the new petition ID.
+
 Post the petition text/document, with the attached petition ID to a public forum.
 
-[i]If you are using an older version of the client, or don’t wish to use the new GUI feature:[/i]
+
+[u][i]If you are using an older version of the client, or don’t wish to use the new GUI feature:[/i][/u]
+
 sha256 hash the petition text/document. [url=http://www.xorbin.com/tools/sha256-hash-calculator]SHA256 Calculator[/url]
+
 The first 8 hex digits of the hash are the petition ID.
-Create a transaction with CLAMspeech set to [code]create clamour <sha256>[/code] where [code]<sha256>[/code] is the full 64 hex digit hash.
+
+Create a transaction with CLAMspeech set to: 
+[code]create clamour <sha256>[/code] 
+
+Where: 
+[code]<sha256>[/code] 
+is the full 64 hex digit hash.
+
 Post the petition text/document, with the attached petition ID to a public forum.
 It is now up to you to rally support for the petition and prove that the network supports the change.
 
@@ -87,7 +116,12 @@ It is now up to you to rally support for the petition and prove that the network
 [size=12pt]Step-by-Step Instructions[/size]
 
 Set your stake(coinstake) CLAMspeech to: 
-[code]clamour <pid>[/code], replace [code]<pid>[/code] with the (space-separated) 8 hex digit petition ID(s) you intend to support.
+[code]clamour <pid>[/code]
+
+Replace: 
+[code]<pid>[/code]
+with the (space-separated) 8 hex digit petition ID(s) you intend to support.
+
 Stake as normal. 
 The more blocks you stake, the more votes you will cast.
 
@@ -99,23 +133,37 @@ The more blocks you stake, the more votes you will cast.
 
 In the following, <pid> should be replaced by the (space-separated) list of petition IDs you wish to support.
 
-[i]When using version 1.4.18 of the reference client or older[/i]
+
+[u][i]When using version 1.4.18 of the reference client or older[/i][/u]
+
 There is no way of specifying a default CLAMspeech to be used only when staking, so we have to set a CLAMspeech which is used for all transactions. 
 Only speech in staking transactions will be counted as 'votes'.
-Either, using the console inside clam-qt: 
+
+[i]Either, using the console inside clam-qt: [/i]
 [code]setspeech “clamour <pid>”[/code]
-Or, using the operating system command line: 
+
+[i]Or, using the operating system command line:[/i] 
 [code]clamd setspeech “clamour <pid>”[/code]
 
-[i]When using version 1.4.19 of the reference client or newer.[/i]
+
+[u][i]When using version 1.4.19 of the reference client or newer.[/i][/u]
+
 To use the User-Interface:
-Click the [code]CLAMour[/code] Tab.
-Enter the petition ID(s) you wish to support, one per line, into the [code]Petition ID[/code] textbox.
-Click the [code]Set Vote[/code] button.
+Click the Tab: 
+[code]CLAMour[/code]
+
+Enter the petition ID(s) you wish to support, one per line, into the textbox:
+[code]Petition ID[/code]
+
+Click the button:
+[code]Set Vote[/code]
+
 To use the console or command-line:
-Either, using the console inside clam-qt: 
+
+[u]Either, using the console inside clam-qt: [/u]
 [code]setstakespeech “clamour pid”[/code]
-Or, using the operating system command line: 
+
+[u]Or, using the operating system command line: [/u]
 [code]clamd setstakespeech “clamour pid”[/code]
 
 [hr]
